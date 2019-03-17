@@ -1,7 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BDAssetLibrary.Config;
+using BDAssetLibrary.Implementations;
+using BDAssetLibrary.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,9 +12,14 @@ namespace BDAssetLibrary
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
-            Configuration = configuration;
+            Configuration = new ConfigurationBuilder()
+                            .SetBasePath(env.ContentRootPath)
+                            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                            .AddEnvironmentVariables()
+                            .Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -30,8 +34,15 @@ namespace BDAssetLibrary
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.Configure<DbSettings>(options =>
+            {
+                options.ConnectionString = Configuration.GetSection("BDAssetLibrary:ConnectionString").Value;
+                options.Database = Configuration.GetSection("BDAssetLibrary:Database").Value;
+            });
+
+            services.AddTransient<IRepository, Repository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
