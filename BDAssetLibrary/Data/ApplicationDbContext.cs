@@ -1,15 +1,12 @@
 ﻿using BDAssetLibrary.Config;
 using BDAssetLibrary.DomainModels;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BDAssetLibrary.Data
 {
-    public class ApplicationDbContext
+    public class ApplicationDbContext : DbContext
     {
         private readonly IMongoDatabase _database = null;
 

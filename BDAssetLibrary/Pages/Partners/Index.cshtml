@@ -1,0 +1,54 @@
+﻿@page
+@model BDAssetLibrary.Pages.Partners.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Partners</h2>
+
+<p style="display:none">
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <label class="control-label" asp-for="Partners[0].PartnerName"></label>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" asp-for="Partners[0].ContactName"></label>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" asp-for="Partners[0].ContactEmail"></label>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" asp-for="Partners[0].ContactPhone"></label>
+        </div>
+        <div class="col-md-4">
+            <label class="control-label">Action</label>
+        </div>
+    </div>
+    @foreach (var item in Model.Partners)
+    {
+        <div class="row padding-top-8">
+            <div class="col-md-2">
+                @item.PartnerName
+            </div>
+            <div class="col-md-2">
+                @item.ContactName
+            </div>
+            <div class="col-md-2">
+                @item.ContactEmail
+            </div>
+            <div class="col-md-2">
+                @item.ContactPhone
+            </div>
+            <div class="col-md-4">
+                <i>Coming soon</i>
+                @*<a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>*@
+            </div>
+        </div>
+    }
+</div>

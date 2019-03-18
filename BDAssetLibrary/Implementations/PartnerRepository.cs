@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace BDAssetLibrary.Implementations
 {
-    public class Repository : IRepository
+    public class PartnerRepository : IPartnerRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public Repository(IOptions<DbSettings> settings)
+        public PartnerRepository(IOptions<DbSettings> settings)
         {
             _context = new ApplicationDbContext(settings);
         }

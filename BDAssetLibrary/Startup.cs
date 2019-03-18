@@ -42,7 +42,7 @@ namespace BDAssetLibrary
                 options.Database = Configuration.GetSection("BDAssetLibrary:Database").Value;
             });
 
-            services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IPartnerRepository, PartnerRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

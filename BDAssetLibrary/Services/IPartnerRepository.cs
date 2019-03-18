@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace BDAssetLibrary.Services
 {
-    public interface IRepository
+    public interface IPartnerRepository
     {
         Task<IList<Partner>> GetPartners();
     }
