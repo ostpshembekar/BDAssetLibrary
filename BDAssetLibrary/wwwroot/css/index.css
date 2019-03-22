@@ -1,0 +1,47 @@
+﻿.indexfont {
+    font-size: 9pt;
+}
+
+.indexmargin {
+    margin-left: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 1px;
+}
+
+.indexemailfont {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16pt;
+    color: #32292F;
+}
+
+.indexemailmargin {
+    margin-left: 5px;
+    margin-bottom: 2px;
+    padding-bottom: 1px;
+}
+
+.indexrowmargin {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.indexlinkfont {
+    font-size: 9pt;
+}
+
+.indexlinkmargin {
+    margin-right: 6px;
+    margin-bottom: 0px;
+    padding-bottom: 1px;
+}
+
+.indexrow {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px 4px;
+    background-color: #FEFEFE;
+    display: block;
+    box-shadow: 2px 3px 2px #ccc;
+    padding: 10px, 0;
+}

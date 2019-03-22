@@ -3,6 +3,7 @@ using BDAssetLibrary.Data;
 using BDAssetLibrary.DomainModels;
 using BDAssetLibrary.Services;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -19,7 +20,15 @@ namespace BDAssetLibrary.Implementations
         }
         public async Task<IList<Partner>> GetPartners()
         {
-            return await _context.Partners.Find(_ => true).ToListAsync();
+            var filter = Builders<Partner>.Filter.Empty;
+            var projection = Builders<Partner>.Projection.Include("_id")
+                                                    .Include("name")
+                                                    .Include("contact")
+                                                    .Include("footprint")
+                                                    .Include("potentialares")
+                                                    .Include("contracts");
+            var result = await _context.Partners.Find(filter).Project<Partner>(projection).ToListAsync();
+            return result;
         }
     }
 }

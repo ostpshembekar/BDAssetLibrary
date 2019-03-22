@@ -10,7 +10,7 @@
     <a asp-page="Create" class="btn btn-primary">Create New</a>
 </p>
 
-<div class="container">
+@*<div class="container">
     <div class="row">
         <div class="col-md-2">
             <label class="control-label" asp-for="Partners[0].PartnerName"></label>
@@ -18,13 +18,13 @@
         <div class="col-md-2">
             <label class="control-label" asp-for="Partners[0].ContactName"></label>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <label class="control-label" asp-for="Partners[0].ContactEmail"></label>
         </div>
         <div class="col-md-2">
             <label class="control-label" asp-for="Partners[0].ContactPhone"></label>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <label class="control-label">Action</label>
         </div>
     </div>
@@ -37,18 +37,32 @@
             <div class="col-md-2">
                 @item.ContactName
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 @item.ContactEmail
             </div>
             <div class="col-md-2">
                 @item.ContactPhone
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <i>Coming soon</i>
-                @*<a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>*@
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
             </div>
+        </div>
+    }*@
+
+    @foreach (var result in Model.Partners)
+    {
+        <div class="row indexrow indexrowmargin">
+            <p class="indexemailfont indexemailmargin"><strong>@result.PartnerName</strong></p>
+            <p class="indexfont indexmargin">Contact name(s): <strong>@result.ContactName</strong></p>
+            <p class="indexfont indexmargin">Contact email(s): <strong>@result.ContactEmail</strong></p>
+            <p class="indexfont indexmargin">Contact Phone(s): <strong>@result.ContactPhone</strong></p>
+            @*<div class="col-sm-2 col-sm-offset-10">
+                    <a class="searchlinkfont searchlinkmargin" href="#">Add Role</a>
+                    <a class="searchlinkfont searchlinkmargin" href="#">Add Service Area</a>
+                </div>*@
         </div>
     }
 </div>

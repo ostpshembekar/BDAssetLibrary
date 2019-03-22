@@ -6,6 +6,7 @@ using BDAssetLibrary.Services;
 using BDAssetLibrary.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MongoDB.Bson;
 
 namespace BDAssetLibrary.Pages.Partners
 {
@@ -31,9 +32,9 @@ namespace BDAssetLibrary.Pages.Partners
                 {
                     ID = partner.PartnerID.ToString(),
                     PartnerName = partner.name,
-                    ContactName = partner.contact["name"].AsString,
-                    ContactEmail = partner.contact["email"].AsString,
-                    ContactPhone = partner.contact["phoneno"].AsString
+                    ContactName = partner.GetContactName(),
+                    ContactEmail = partner.GetContactEmail(),
+                    ContactPhone = partner.GetContactPhoneNo()
                 };
                 lstpartners.Add(partnerviewmodel);
             }
