@@ -9,7 +9,11 @@
 <p style="display:none">
     <a asp-page="Create" class="btn btn-primary">Create New</a>
 </p>
-
+<div class="row">
+    <div class="col-sm-4">
+        <h6><strong>@(Model.RecordCount)</strong> result(s) found</h6>
+    </div>
+</div>
 @foreach (var result in Model.Partners)
 {
     <div class="row indexrow indexrowmargin">

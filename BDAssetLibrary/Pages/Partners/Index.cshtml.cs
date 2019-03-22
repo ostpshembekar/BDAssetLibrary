@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BDAssetLibrary.Services;
+﻿using BDAssetLibrary.Services;
 using BDAssetLibrary.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BDAssetLibrary.Pages.Partners
 {
@@ -22,11 +20,14 @@ namespace BDAssetLibrary.Pages.Partners
         [BindProperty]
         public IList<PartnerViewModel> Partners { get; set; }
 
+        [BindProperty]
+        public int RecordCount { get; set; }
+
         public async Task OnGetAsync()
         {
             var lstpartners = new List<PartnerViewModel>();
             var partners = await _repo.GetPartners();
-            foreach(var partner in partners)
+            foreach (var partner in partners)
             {
                 var partnerviewmodel = new PartnerViewModel
                 {
@@ -39,6 +40,10 @@ namespace BDAssetLibrary.Pages.Partners
                 lstpartners.Add(partnerviewmodel);
             }
             Partners = lstpartners;
+            SetRecordCount();
         }
+
+        private void SetRecordCount() => RecordCount = Partners?.Count ?? 0;
+        
     }
 }
