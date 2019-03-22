@@ -52,28 +52,25 @@
         </div>
     }*@
 
-    @foreach (var result in Model.Partners)
-    {
-        <div class="row indexrow indexrowmargin">
-            <p class="indexemailfont indexemailmargin"><strong>@result.PartnerName</strong></p>
-            <div class="row indexmargin indexfont">
-                <div class="col-md-4">
-                    Contact name(s): <strong>@result.ContactName</strong>
-                </div>
-                <div class="col-md-4">
-                    Contact email(s): <strong>@result.ContactEmail</strong>
-                </div>
-                <div class="col-md-4">
-                    Contact Phone(s): <strong>@result.ContactPhone</strong>
-                </div>
+@foreach (var result in Model.Partners)
+{
+    <div class="row indexrow indexrowmargin">
+        <p class="indexemailfont indexemailmargin"><strong>@result.PartnerName</strong></p>
+        <div class="row indexmargin indexfont">
+            <div class="col-md-4">
+                Contact name(s): <strong>@result.ContactName</strong>
             </div>
-            @*<p class="indexfont indexmargin">Contact name(s): <strong>@result.ContactName</strong></p>
-            <p class="indexfont indexmargin">Contact email(s): <strong>@result.ContactEmail</strong></p>
-            <p class="indexfont indexmargin">Contact Phone(s): <strong>@result.ContactPhone</strong></p>*@
-            @*<div class="col-sm-2 col-sm-offset-10">
-                    <a class="searchlinkfont searchlinkmargin" href="#">Add Role</a>
-                    <a class="searchlinkfont searchlinkmargin" href="#">Add Service Area</a>
-                </div>*@
+            <div class="col-md-4">
+                Contact email(s): <strong>@result.ContactEmail</strong>
+            </div>
+            <div class="col-md-4">
+                Contact Phone(s): <strong>@result.ContactPhone</strong>
+            </div>
         </div>
-    }
+        @*<div class="col-sm-2 col-sm-offset-10">
+            <a class="indexlinkfont indexlinkmargin" href="#">Update</a>
+            <a class="indexlinkfont indexlinkmargin" href="#">Delete</a>
+        </div>*@
+    </div>
+}
 </div>
