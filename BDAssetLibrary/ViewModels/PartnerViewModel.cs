@@ -13,5 +13,8 @@ namespace BDAssetLibrary.ViewModels
         public string ContactEmail { get; set; }
         [DisplayName("Contact Phone")]
         public string ContactPhone { get; set; }
+        [DisplayName("Has footprint in")]
+        public string Footprints { get; set; }
+        public int Relevancy { get; internal set; }
     }
 }

@@ -43,6 +43,7 @@ namespace BDAssetLibrary
             });
 
             services.AddTransient<IPartnerRepository, PartnerRepository>();
+            services.AddTransient<IRelevancy, Relevancy>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

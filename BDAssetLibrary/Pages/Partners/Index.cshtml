@@ -10,28 +10,47 @@
     <a asp-page="Create" class="btn btn-primary">Create New</a>
 </p>
 <div class="row">
+    <div class="col-sm-6 col-sm-offset-6">
+        <form method="POST">
+            <div class="form-group">
+                <div class="input-group">
+                    <input asp-for="Query" class="form-control" placeholder='Enter search criteria...' />
+                    <span class="input-group-btn">
+                        <input type="submit" value="Search" class="btn btn-success" />
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-4">
         <h6><strong>@(Model.RecordCount)</strong> result(s) found</h6>
     </div>
 </div>
 @foreach (var result in Model.Partners)
 {
-    <div class="row indexrow indexrowmargin">
-        <p class="indexemailfont indexemailmargin"><strong>@result.PartnerName</strong></p>
-        <div class="row indexmargin indexfont">
-            <div class="col-md-4">
-                Contact name(s): <strong>@result.ContactName</strong>
-            </div>
-            <div class="col-md-4">
-                Contact email(s): <strong>@result.ContactEmail</strong>
-            </div>
-            <div class="col-md-4">
-                Contact Phone(s): <strong>@result.ContactPhone</strong>
-            </div>
+<div class="row indexrow indexrowmargin">
+    <p class="indexemailfont indexemailmargin"><strong>@result.PartnerName</strong></p>
+    <div class="row indexmargin indexfont">
+        <div class="col-md-4">
+            Contact name(s): <strong>@result.ContactName</strong>
         </div>
-        @*<div class="col-sm-2 col-sm-offset-10">
+        <div class="col-md-4">
+            Contact email(s): <strong>@result.ContactEmail</strong>
+        </div>
+        <div class="col-md-4">
+            Contact Phone(s): <strong>@result.ContactPhone</strong>
+        </div>
+    </div>
+    <div class="row indexmargin indexfont">
+        <div class="col-md-6">
+            Has footprint(s) in: <strong>@result.Footprints</strong>
+        </div>
+    </div>
+    @*<div class="col-sm-2 col-sm-offset-10">
             <a class="indexlinkfont indexlinkmargin" href="#">Update</a>
             <a class="indexlinkfont indexlinkmargin" href="#">Delete</a>
         </div>*@
-    </div>
+</div>
 }

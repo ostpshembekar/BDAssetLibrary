@@ -1,5 +1,7 @@
-﻿using MongoDB.Bson;
+﻿using BDAssetLibrary.Helpers;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Text;
 
 namespace BDAssetLibrary.DomainModels
 {
@@ -12,6 +14,7 @@ namespace BDAssetLibrary.DomainModels
         public BsonDocument footprint { get; set; }
         public BsonArray potentialareas { get; set; }
         public BsonArray contracts { get; set; }
+        public int Relevancy { get; internal set; }
 
         public string GetContactName()
         {
@@ -38,6 +41,18 @@ namespace BDAssetLibrary.DomainModels
             if (contact.Contains("phoneno"))
                 return contact["phoneno"].AsString;
             return string.Empty;
+        }
+
+        public string GetFootPrintInfo()
+        {
+            if (footprint == null)
+                return string.Empty;
+            StringBuilder sb = new StringBuilder();
+            foreach (var fp in footprint)
+            {
+                sb.Append(sb.Length == 0 ? fp.Name.Capitalize() : ", " + fp.Name.Capitalize());
+            }
+            return sb.ToString();
         }
     }
 }
